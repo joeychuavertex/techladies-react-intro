@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Welcome = () => {
     const greeting = 'Welcome to React';
@@ -20,8 +20,19 @@ const Data = () => {
     )
 }
 
+
 const App = () => {
     const name = "John Doe"
+
+    const [count, setCount] = useState(0);
+    const [prevCount, setPrevCount] = useState(0);
+
+    const handleClick = () => {
+        setCount((prev) => {
+            setPrevCount(prev);
+        });
+        setCount(count + 1);
+    };
 
     return (
         <>
@@ -30,6 +41,9 @@ const App = () => {
             <div>{ 2 + 2 }</div>
             <Welcome/>
             <Data/>
+            <h3>Current count: {count}</h3>
+            <h3>Previous count: {prevCount}</h3>
+            <button onClick={handleClick}>Increment</button>
         </>
     )
 };
