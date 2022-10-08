@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 const Welcome = () => {
     const greeting = 'Welcome to React';
@@ -66,6 +67,7 @@ const Countdown = ({ hr, min, sec }) => {
     );
 };
 
+
 const App = () => {
     const name = "John Doe"
 
@@ -79,6 +81,13 @@ const App = () => {
         setCount(count + 1);
     };
 
+    const [pokemon, setPokemon] = useState([])
+
+    useEffect(() => {
+    }, [])
+    axios.get("http://pokeapi.co/api/v2/pokemon").then(res => {
+        setPokemon(res.data.results.map(p=>p.name))
+    })
 
     return (
         <>
@@ -94,6 +103,10 @@ const App = () => {
             <div>
                 <Countdown hr={1} min={45} sec={0} />
             </div>
+
+            {pokemon.map(p=>(
+                <div key={p}>{p}</div>
+            ))}
         </>
     )
 };
