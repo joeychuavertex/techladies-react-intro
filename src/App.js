@@ -67,6 +67,12 @@ const Countdown = ({ hr, min, sec }) => {
     );
 };
 
+const newStyle = {
+    color: "white",
+    backgroundColor: "DodgerBlue",
+    padding: "10px",
+    fontFamily: "Arial"
+};
 
 const App = () => {
     const name = "John Doe"
@@ -92,6 +98,8 @@ const App = () => {
     return (
         <>
             <div>Hello World!</div>
+            <div style={{color: "red"}}>Adding red colour in line</div>
+            <div style={newStyle}>Adding new style in app</div>
             <div>{ name }</div>
             <div>{ 2 + 2 }</div>
             <Welcome/>
